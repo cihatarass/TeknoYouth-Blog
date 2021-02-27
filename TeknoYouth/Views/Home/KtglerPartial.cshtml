@@ -1,0 +1,13 @@
+﻿@model IEnumerable<TeknoYouth.Models.KategoriT>
+
+@{
+    Layout = null;
+ }
+
+<ul class="social-share text-center">
+
+    @foreach (var item in Model)
+    {
+        <li style="display:inline;"><a href="/Home/KtgBlog/@item.KategoriID" class="sidelist">-@item.KategoriAD</a><span> (@item.Blog.Count())</span></li>
+    }
+</ul>

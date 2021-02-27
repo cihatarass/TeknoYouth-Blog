@@ -1,0 +1,18 @@
+﻿@model IEnumerable<TeknoYouth.Models.Blog>
+
+
+@{
+
+    Layout = null;
+}
+
+<ul class="cat">
+    @foreach (var item in Model.Take(3))
+    {
+        <li>
+            <a class="sidelist" href="/Home/BlogDetay/@item.id"><p style="font-size:22px;">@item.Baslik</p></a>
+        </li>
+        
+    }
+
+</ul>

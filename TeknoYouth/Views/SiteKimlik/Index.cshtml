@@ -1,0 +1,48 @@
+﻿@model IEnumerable<TeknoYouth.Models.SiteKimlik>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Site Kimlik Bilgileri</h2>
+
+
+<table class="table table-bordered table-striped table-hover">
+    <tr>
+        <th>
+            Site Kimliği
+        </th>
+        <th>
+           Anahtar Kelimeler
+        </th>
+        <th>
+            Site Açıklaması
+        </th>
+        <th>
+            Logo
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Keywords)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            <img src="@item.LogoURL"  height="200" width="200"/>
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

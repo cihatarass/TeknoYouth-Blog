@@ -1,0 +1,30 @@
+﻿@model IEnumerable<TeknoYouth.Models.Projeler>
+
+@{
+    ViewBag.Title = "Projeler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<section class="py-4">
+    <div class="container">
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6">
+                    <div class="card text-center table-bordered" style="margin-top:15px; background-color:#252525; color:white; border-top-left-radius:10px; border-top-right-radius:10px;">
+
+                        <h2 class="card-text">@item.ProjeBaslik</h2>
+                        <img src="~/proje1.png" class="card-img mt-2">
+                        <p class="card-text">@Html.Raw(item.ProjeAciklama)</p>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        </div>
+</section>
+

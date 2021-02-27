@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TeknoYouth.Models.KategoriT>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Kategoriler</h2>
+
+<p>
+    @Html.ActionLink("Yeni Oluştur", "Create")
+</p>
+<table class="table table-striped table-hover table-bordered">
+    <tr>
+        <th>
+           Kategori Adı
+        </th>
+        <th>
+           Açıklama
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KategoriAD)
+        </td>
+        <td>
+            @Html.Raw(item.Aciklama)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.KategoriID }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.KategoriID })
+        </td>
+    </tr>
+}
+
+</table>

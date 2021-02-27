@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TeknoYouth.Models.Projeler>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Projeler</h2>
+
+<p>
+    @Html.ActionLink("Yeni Oluştur", "Create")
+</p>
+<table class="table table-striped table-hover table-bordered">
+    <tr>
+        <th>
+            Proje Adı
+        </th>
+        <th>
+            Açıklama
+        </th>
+        <th>
+            İşlemler
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjeBaslik)
+        </td>
+        <td>
+            @Html.Raw(item.ProjeAciklama)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

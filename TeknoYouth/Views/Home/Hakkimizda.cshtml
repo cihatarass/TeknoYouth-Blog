@@ -1,0 +1,24 @@
+﻿@model TeknoYouth.Models.CvBilgi
+
+@{
+    ViewBag.Title = "Hakkimizda";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <div class="container text-center">
+        <div class="post-title">
+            <h1>@Model.Baslik</h1>
+        </div>
+        <hr />
+        <div class="post-meta">
+            <h5>@Model.Aciklama</h5>
+        </div>
+        <div class="post-preview">
+            <p>@Html.Raw(Model.Yazi)</p>
+        </div>
+
+
+    </div>
+</section>
+

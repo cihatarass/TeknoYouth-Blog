@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Ozet";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>TeknoYouth Yönetim Paneli</h2>
+        <h5>Kullanıcı Hoşgeldin! , Seni gördüğüme sevindim! </h5>
+    </div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="panel panel-back noti-box">
+            <span class="icon-box bg-color-red set-icon">
+                <i class="fas fa-feather-alt"></i>
+            </span>
+            <div class="text-box">
+                <p class="main-text">@ViewBag.YaziSay Blog Yazısı</p>
+                <p class="text-muted">Blog Yazısı</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="panel panel-back noti-box">
+            <span class="icon-box bg-color-green set-icon">
+                <i class="fa fa-bars"></i>
+            </span>
+            <div class="text-box">
+                <p class="main-text">@ViewBag.KtgSay Kategori</p>
+                <p class="text-muted">Kategori</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="panel panel-back noti-box">
+            <span class="icon-box bg-color-blue set-icon">
+                <i class="fas fa-project-diagram"></i>
+            </span>
+            <div class="text-box">
+                <p class="main-text">@ViewBag.PrjSay Proje</p>
+                <p class="text-muted">Proje</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="panel panel-back noti-box">
+            <span class="icon-box bg-color-brown set-icon">
+                <i class="fas fa-user-alt"></i>
+            </span>
+            <div class="text-box">
+                <p class="main-text">@ViewBag.AdminSay Editör</p>
+                <p class="text-muted">Editör</p>
+            </div>
+        </div>
+    </div>
+</div>
+

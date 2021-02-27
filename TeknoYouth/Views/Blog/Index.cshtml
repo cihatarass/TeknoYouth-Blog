@@ -1,0 +1,46 @@
+﻿@model IEnumerable<TeknoYouth.Models.Blog>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Blog Yazıları</h2>
+
+<p>
+    @Html.ActionLink("Yeni Oluştur", "Create")
+</p>
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+        <th>
+           Blog Başlığı
+        </th>
+        <th>
+           Kategori
+        </th>
+        <th>
+            Tarih
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Baslik)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.KategoriT.KategoriAD)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tarih)
+    </td>
+    <td>
+        @Html.ActionLink("Düzenle", "Edit", new { id = item.id }) |
+        @Html.ActionLink("Görüntüle", "Details", new { id = item.id }) |
+        @Html.ActionLink("Sil", "Delete", new { id = item.id })
+    </td>
+</tr>
+}
+
+</table>

@@ -1,0 +1,129 @@
+﻿@model TeknoYouth.Models.Blog
+
+
+@{
+    ViewBag.Title = "BlogDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-8">
+    <article class="blog-post">
+        <h2 class="blog-post-title">@Model.Baslik</h2>
+        <p class="blog-post-meta">@Model.tarih <a href="#"> @Model.KategoriT.KategoriAD</a></p>
+        <p>@Html.Raw(Model.İcerik)</p>
+    </article>
+
+    
+    <form class="mt-2">
+        <h3 class="text-success">Yorum Yap</h3>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">E-Posta Adresi</label>
+            <input type="text" class="form-control" id="adsoyad" placeholder="adresiniz@example.com">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlInput1">İsim ve Soyisim</label>
+            <input type="email" class="form-control" id="eposta" placeholder="İsim - Soyisim">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Mesajınız</label>
+            <textarea class="form-control" id="icerik" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-outline-success" id="gonder">Yorum Yap</button>
+    </form>
+</div>
+
+
+<div class="col-md-4">
+
+    <div class="p-4 mb-3 bg-light rounded">
+        <h4 class="fst-italic">Kategoriler</h4>
+        @{
+            Html.RenderAction("KtglerPartial", "Home");
+        }
+    </div>
+
+
+    <div class="p-4 mb-3 bg-light rounded">
+        <h4 class="fst-italic">Son Yazılar</h4>
+        @{
+            Html.RenderAction("SonBloglar", "Home");
+        }
+    </div>
+
+    <div class="p-4 mb-3 bg-light rounded">
+        <h4 class="fst-italic">About</h4>
+        <p class="mb-0">Saw you downtown singing the Blues. Watch you circle the drain. Why don't you let me stop by? Heavy is the head that <em>wears the crown</em>. Yes, we make angels cry, raining down on earth from up above.</p>
+    </div>
+
+
+    <div class="p-4 mb-3 bg-light rounded">
+        <h4 class="fst-italic">Diğer Plaformlardan</h4>
+        <h5 class="fst-italic">Takip Edin!</h5>
+        <ul style=" float:left; ">
+            <li style="display:inline;"><a href="#"><i class="fab fa-youtube fa-2x sidelist"></i></a></li>
+            <li style="display:inline;"><a href="#"><i class="fab fa-instagram fa-2x sidelist"></i></a></li>
+            <li style="display:inline;"><a href="#"><i class="fab fa-twitter fa-2x sidelist"></i></a></li>
+            <li style="display:inline;"><a href="#"><i class="fab fa-github fa-2x sidelist"></i></a></li>
+        </ul>
+    </div>
+
+</div>
+
+       
+
+
+
+@*<div class="row">
+        <div>
+            <h2>Yorumlar</h2>
+            @foreach (var item in Model.Yorum.ToList().Where(x=>x.onay==true).OrderByDescending(x => x.YrmID))
+            {
+
+                <p>@item.AdSoyad - @item.EPosta</p>
+                <p>@item.İcerik</p>
+            }
+        </div>
+    </div>*@
+
+
+
+
+
+
+
+<script src="vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="js/jqBootstrapValidation.js"></script>
+<script src="js/contact_me.js"></script>
+
+<!-- Theme JavaScript -->
+<script src="js/clean-blog.min.js"></script>
+<script src="~/Content/AdminLayout/assets/js/jquery-1.10.2.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#gonder").click(function () {
+            var adisoyadi = $("#adsoyad").val();
+            var epostasi = $("#eposta").val();
+            var yorumunuz = $("#icerik").val();
+            $.ajax({
+                url: '/Home/YorumYap/',
+                data: { adsoyad: adisoyadi, eposta: epostasi, icerikz: yorumunuz, blogid:@Model.id},
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    alert("Sayın   " +   adisoyadi + " Yorumunuz Başarıyla Gönderildi! Kontrol edildikten sonra paylaşılacaktır.");
+                }
+            });
+
+        });
+    })
+
+</script>
+
+

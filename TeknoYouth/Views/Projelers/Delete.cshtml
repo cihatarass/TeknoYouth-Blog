@@ -1,0 +1,33 @@
+﻿@model TeknoYouth.Models.Projeler
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Projeyi Sil</h2>
+
+<h3>Projeyi Silmek istediğinize emin misiniz?</h3>
+<div>
+    <hr />
+
+    <div class="list-group">
+        <div class="list-group-item">
+            <p><strong>Proje Adı:</strong> @Html.DisplayFor(model => model.ProjeBaslik)</p>
+        </div>
+        <div class="list-group-item">
+            <h4 class="list-group-item-heading list-group-item-info" style="text-align:center;">İçerik</h4>
+            <p>@Html.Raw(Model.ProjeAciklama)</p>
+        </div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Geri Dön", "Index")
+        </div>
+    }
+</div>

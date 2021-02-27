@@ -1,0 +1,75 @@
+﻿@model IPagedList<TeknoYouth.Models.Blog> 
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "KtgBlog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-8">
+
+    @foreach (var item in Model)
+    {
+        <div class="post-preview">
+            <a href="/Home/BlogDetay/@item.id">
+                <h2 class="post-title">
+                    @item.Baslik
+                </h2>
+                <h3 class="post-subtitle">
+                    @Html.Raw(item.İcerik.Substring(0, 250))...
+                </h3>
+            </a>
+            <p class="post-meta">Yazar <a href="#">doldur</a>  @item.KategoriT.KategoriAD</p>
+        </div>
+
+        <hr>
+        <!-- Pager -->
+
+    }
+
+
+</div>
+
+
+
+
+<div class="col-lg-4">
+    <aside class="right-sidebar">
+        <div class="widget">
+            <form class="form-search">
+                <input class="form-control" type="text" placeholder="Birşeyler Ara..">
+            </form>
+        </div>
+        <div class="widget">
+            <h3 class="widgetheading">Kategoriler</h3>
+            @{
+                Html.RenderAction("KtglerPartial", "Home");
+            }
+        </div>
+        <div class="widget">
+            <h3 class="widgetheading">Popüler Etiketler</h3>
+            <ul class="tags">
+                <li><a href="#">Web design</a></li>
+                <li><a href="#">Trends</a></li>
+                <li><a href="#">Technology</a></li>
+                <li><a href="#">Internet</a></li>
+                <li><a href="#">Tutorial</a></li>
+                <li><a href="#">Development</a></li>
+            </ul>
+        </div>
+    </aside>
+</div>
+
+
+
+
+
+
+
+<div class="col-lg-8">
+    <div class="pagination">
+        @Html.PagedListPager(Model, sayfa => Url.Action("Index", new { sayfa }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    </div>
+</div>
+
